@@ -230,7 +230,7 @@ function getCarInfoById(array, id) {
 
 
 
-
+/*****COMPLETED*****/
 /**
  * ### Challenge `sortCarInventory`
  * 
@@ -240,11 +240,17 @@ function getCarInfoById(array, id) {
  * sortCarInventory returns an inventory that is sorted by car_model, ascending [A-Z].
 */
 function sortCarInventory(arr) {
-  for(let i = 0; i < arr.length; i++){
-    
-  }
+  return arr.sort(function(a, b){
+    if(a.car_model < b.car_model){
+      return -1;
+    } else if(a.car_model > b.car_model){
+      return 1;
+    } else{
+      return 0;
+    }
+  });
 }
-console.log(sortCarInventory(inventory));
+// console.log(sortCarInventory(inventory));
 
 
 
@@ -366,9 +372,20 @@ const argTimesTwo = num => num * 2; // code here!
  *         (1) causes the odometer in the object to be increased by the distance,
  *         (2) returns the updated value of the `odometer`.
 */
-function carMaker(/* code here */) {
-  /* code here */
+function carMaker(miles) {
+  const newCar = {
+    odometer: miles,
+    drive: function(distance){
+      if(distance){
+        this.odometer += distance;
+        return this.odometer;
+      }
+    }
+  }
+  return newCar;
 }
+
+console.log(carMaker(150));
 
 
 
